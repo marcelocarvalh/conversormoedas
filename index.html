@@ -30,30 +30,55 @@
             color: #333;
         }
 
-        .converter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
+        .dropdown {
+            position: relative;
         }
 
-        .converter-form input, .converter-form select {
+        .dropdown-selected {
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            outline: none;
-        }
-
-        .converter-form select {
+            background-color: white;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
-        .converter-form option {
-            padding-left: 10px;
-            background-repeat: no-repeat;
-            background-position: left center;
-            background-size: 20px;
+        .dropdown-selected img {
+            width: 20px;
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+        }
+
+        .dropdown-list div {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .dropdown-list div img {
+            width: 20px;
+            height: 15px;
+            margin-right: 10px;
+        }
+
+        .dropdown-list div:hover {
+            background-color: #f4f4f9;
         }
 
         .converter-form button {
@@ -74,26 +99,6 @@
             font-size: 1.2rem;
             color: #333;
         }
-
-        option[value="USD"] {
-            background-image: url('https://flagcdn.com/us.svg');
-        }
-
-        option[value="EUR"] {
-            background-image: url('https://flagcdn.com/eu.svg');
-        }
-
-        option[value="GBP"] {
-            background-image: url('https://flagcdn.com/gb.svg');
-        }
-
-        option[value="JPY"] {
-            background-image: url('https://flagcdn.com/jp.svg');
-        }
-
-        option[value="BRL"] {
-            background-image: url('https://flagcdn.com/br.svg');
-        }
     </style>
 </head>
 <body>
@@ -101,20 +106,33 @@
         <h1>Currency Converter</h1>
         <form class="converter-form">
             <input type="number" id="amount-input" placeholder="Enter amount..." />
-            <select id="from-currency">
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="GBP">GBP</option>
-                <option value="JPY">JPY</option>
-                <option value="BRL">BRL</option>
-            </select>
-            <select id="to-currency">
-                <option value="EUR">EUR</option>
-                <option value="USD">USD</option>
-                <option value="GBP">GBP</option>
-                <option value="JPY">JPY</option>
-                <option value="BRL">BRL</option>
-            </select>
+
+            <div class="dropdown">
+                <div class="dropdown-selected" id="from-dropdown">
+                    <img src="https://flagcdn.com/us.svg" alt="USD"> USD
+                </div>
+                <div class="dropdown-list" id="from-list">
+                    <div data-value="USD"><img src="https://flagcdn.com/us.svg" alt="USD"> USD</div>
+                    <div data-value="EUR"><img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR</div>
+                    <div data-value="GBP"><img src="https://flagcdn.com/gb.svg" alt="GBP"> GBP</div>
+                    <div data-value="JPY"><img src="https://flagcdn.com/jp.svg" alt="JPY"> JPY</div>
+                    <div data-value="BRL"><img src="https://flagcdn.com/br.svg" alt="BRL"> BRL</div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdown-selected" id="to-dropdown">
+                    <img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR
+                </div>
+                <div class="dropdown-list" id="to-list">
+                    <div data-value="USD"><img src="https://flagcdn.com/us.svg" alt="USD"> USD</div>
+                    <div data-value="EUR"><img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR</div>
+                    <div data-value="GBP"><img src="https://flagcdn.com/gb.svg" alt="GBP"> GBP</div>
+                    <div data-value="JPY"><img src="https://flagcdn.com/jp.svg" alt="JPY"> JPY</div>
+                    <div data-value="BRL"><img src="https://flagcdn.com/br.svg" alt="BRL"> BRL</div>
+                </div>
+            </div>
+
             <button type="submit">Convert</button>
         </form>
         <div class="result" id="result"></div>
@@ -123,16 +141,36 @@
     <script>
         const converterForm = document.querySelector('.converter-form');
         const amountInput = document.querySelector('#amount-input');
-        const fromCurrency = document.querySelector('#from-currency');
-        const toCurrency = document.querySelector('#to-currency');
+        const fromDropdown = document.querySelector('#from-dropdown');
+        const toDropdown = document.querySelector('#to-dropdown');
+        const fromList = document.querySelector('#from-list');
+        const toList = document.querySelector('#to-list');
         const resultDiv = document.querySelector('#result');
+
+        const toggleDropdown = (dropdown) => {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        };
+
+        const selectCurrency = (dropdown, selected, event) => {
+            const value = event.target.closest('div').getAttribute('data-value');
+            const imgSrc = event.target.closest('div').querySelector('img').src;
+            selected.innerHTML = `<img src="${imgSrc}" alt="${value}"> ${value}`;
+            dropdown.style.display = 'none';
+            selected.setAttribute('data-value', value);
+        };
+
+        fromDropdown.addEventListener('click', () => toggleDropdown(fromList));
+        toDropdown.addEventListener('click', () => toggleDropdown(toList));
+
+        fromList.addEventListener('click', (event) => selectCurrency(fromList, fromDropdown, event));
+        toList.addEventListener('click', (event) => selectCurrency(toList, toDropdown, event));
 
         converterForm.addEventListener('submit', async function(event) {
             event.preventDefault();
 
             const amount = parseFloat(amountInput.value);
-            const from = fromCurrency.value;
-            const to = toCurrency.value;
+            const from = fromDropdown.getAttribute('data-value');
+            const to = toDropdown.getAttribute('data-value');
 
             if (isNaN(amount) || amount <= 0) {
                 resultDiv.textContent = 'Please enter a valid amount.';
