@@ -44,6 +44,18 @@
             outline: none;
         }
 
+        .converter-form select {
+            display: flex;
+            align-items: center;
+        }
+
+        .converter-form option {
+            padding-left: 10px;
+            background-repeat: no-repeat;
+            background-position: left center;
+            background-size: 20px;
+        }
+
         .converter-form button {
             padding: 10px 15px;
             border: none;
@@ -62,6 +74,26 @@
             font-size: 1.2rem;
             color: #333;
         }
+
+        option[value="USD"] {
+            background-image: url('https://flagcdn.com/us.svg');
+        }
+
+        option[value="EUR"] {
+            background-image: url('https://flagcdn.com/eu.svg');
+        }
+
+        option[value="GBP"] {
+            background-image: url('https://flagcdn.com/gb.svg');
+        }
+
+        option[value="JPY"] {
+            background-image: url('https://flagcdn.com/jp.svg');
+        }
+
+        option[value="BRL"] {
+            background-image: url('https://flagcdn.com/br.svg');
+        }
     </style>
 </head>
 <body>
@@ -72,14 +104,16 @@
             <select id="from-currency">
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
-                <option value="GBP">LIBRA</option>
-                <option value="JPY">IENE</option>
-            </select>
-            <select id="to-currency">
-                <option value="EUR">EURO</option>
-                <option value="USD">DOLAR</option>
                 <option value="GBP">GBP</option>
                 <option value="JPY">JPY</option>
+                <option value="BRL">BRL</option>
+            </select>
+            <select id="to-currency">
+                <option value="EUR">EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="JPY">JPY</option>
+                <option value="BRL">BRL</option>
             </select>
             <button type="submit">Convert</button>
         </form>
