@@ -2,7 +2,7 @@
 
 Uma aplicação web para converter diferentes moedas, desenvolvida com HTML, CSS e JavaScript. A aplicação permite aos usuários fazer conversões de moedas de forma fácil e rápida.
 
-📋 Funcionalidades
+**📋 Funcionalidades**
 
 Conversão de moedas em tempo real
 Interface limpa e responsiva
