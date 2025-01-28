@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,6 +124,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="converter-container">
         <h1>Currency Converter</h1>
@@ -131,7 +133,7 @@
 
             <div class="dropdown">
                 <div class="dropdown-selected" id="from-dropdown">
-                    <img src="https://flagcdn.com/us.svg" alt="USD"> USD
+                    <!--<img src="https://flagcdn.com/us.svg" alt="USD"> USD -->
                 </div>
                 <div class="dropdown-list" id="from-list">
                     <div data-value="USD"><img src="https://flagcdn.com/us.svg" alt="USD"> USD</div>
@@ -144,7 +146,7 @@
 
             <div class="dropdown">
                 <div class="dropdown-selected" id="to-dropdown">
-                    <img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR
+                    <!--<img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR -->
                 </div>
                 <div class="dropdown-list" id="to-list">
                     <div data-value="USD"><img src="https://flagcdn.com/us.svg" alt="USD"> USD</div>
@@ -177,8 +179,8 @@
             const value = event.target.closest('div').getAttribute('data-value');
             const imgSrc = event.target.closest('div').querySelector('img').src;
             selected.innerHTML = `<img src="${imgSrc}" alt="${value}"> ${value}`;
+            selected.setAttribute('data-value', value); // Atualiza o data-value
             dropdown.style.display = 'none';
-            selected.setAttribute('data-value', value);
         };
 
         fromDropdown.addEventListener('click', () => toggleDropdown(fromList));
@@ -187,12 +189,18 @@
         fromList.addEventListener('click', (event) => selectCurrency(fromList, fromDropdown, event));
         toList.addEventListener('click', (event) => selectCurrency(toList, toDropdown, event));
 
-        converterForm.addEventListener('submit', async function(event) {
+        converterForm.addEventListener('submit', async function (event) {
             event.preventDefault();
 
             const amount = parseFloat(amountInput.value);
             const from = fromDropdown.getAttribute('data-value');
             const to = toDropdown.getAttribute('data-value');
+
+            // Verificação de moedas iguais
+            if (from === to) {
+                resultDiv.textContent = 'Erro: As moedas de origem e destino são iguais.';
+                return; // Interrompe a execução da função
+            }
 
             if (isNaN(amount) || amount <= 0) {
                 resultDiv.textContent = 'Please enter a valid amount.';
@@ -216,4 +224,5 @@
         });
     </script>
 </body>
+
 </html>
