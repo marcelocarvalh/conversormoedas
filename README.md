@@ -2,7 +2,7 @@
 
 Uma aplicação web para converter diferentes moedas, desenvolvida com HTML, CSS e JavaScript. A aplicação permite aos usuários fazer conversões de moedas de forma fácil e rápida.
 
-**📋 Funcionalidades**
+# 📋 Funcionalidades
 
 Conversão de moedas em tempo real
 Interface limpa e responsiva
@@ -10,7 +10,7 @@ Suporte para múltiplas moedas
 Design interativo com resultados imediatos
 Testes automatizados usando Cypress
 
-**🛠️ Tecnologias Utilizadas**
+# 🛠️ Tecnologias Utilizadas
 
 HTML5
 CSS3
@@ -18,14 +18,14 @@ JavaScript
 Cypress (para testes)
 
 
-**🚀 Como Começar**
+# 🚀 Como Começar
 Pré-requisitos
 
 Node.js instalado no computador
 Git para controle de versão
 
 
-**Instalação**
+# Instalação
 
 Clone o repositório:
 
@@ -43,13 +43,13 @@ Execute a aplicação:
 
 bashCopynpm start
 
-**🧪 Executando os Testes**
+# 🧪 Executando os Testes
 
 O projeto usa Cypress para testes end-to-end. Para executar os testes:
 bashCopy# Abrir o Cypress Test Runner
 npm run cy:open
 
-**#Executar testes em modo headless#**
+# Executar testes em modo headless
 npm run cy:run
 💻 Como Usar
 
