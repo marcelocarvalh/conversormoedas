@@ -116,6 +116,15 @@
             background-color: #4cae4c;
         }
 
+        #clear-btn {
+    background-color: #d9534f;
+    margin-left: 20px;
+        }
+
+        #clear-btn:hover {
+            background-color: #c9302c;
+        }
+
         .result {
             text-align: center;
             font-size: 1.2rem;
@@ -157,7 +166,10 @@
                 </div>
             </div>
 
-            <button type="submit">Convert</button>
+            <div class="button-container">
+                <button type="submit">Convert</button>
+                <button type="button" id="clear-btn">Clear</button>
+            </div>
         </form>
         <div class="result" id="result"></div>
     </div>
@@ -170,6 +182,7 @@
         const fromList = document.querySelector('#from-list');
         const toList = document.querySelector('#to-list');
         const resultDiv = document.querySelector('#result');
+        const clearBtn = document.querySelector('#clear-btn');
 
         const toggleDropdown = (dropdown) => {
             dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
@@ -221,6 +234,14 @@
             } catch (error) {
                 resultDiv.textContent = 'Error fetching conversion rate.';
             }
+        });
+        clearBtn.addEventListener('click', () => {
+            amountInput.value = '';
+            fromDropdown.innerHTML = ''; // Reseta os dropdowns
+            fromDropdown.removeAttribute('data-value');
+            toDropdown.innerHTML = '';
+            toDropdown.removeAttribute('data-value');
+            resultDiv.textContent = ''; // Limpa o resultado
         });
     </script>
 </body>
