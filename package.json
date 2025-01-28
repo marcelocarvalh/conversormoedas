@@ -1,0 +1,13 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "Sample project to demonstrate a c.currency-converter Cypress command.",
+  "scripts": {
+  "cy:open": "cypress open",
+  "test": "cypress run"
+},
+  "devDependencies": {
+    "cypress": "^14.0.0"
+  }
+}
+
