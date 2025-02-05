@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 describe('Conversor de Moedas', () => {
   beforeEach(() => {
-    cy.visit('https://conversormoedasi.vercel.app/')
+    cy.visit('http://127.0.0.1:5501/index.html')
   });
  it('verifica se todos os elementos estão visíveis', () => {    
   cy.get('#amount-input').should('be.visible')
