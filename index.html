@@ -4,7 +4,7 @@
 <head>
     <meta name="google-adsense-account" content="ca-pub-1223809323897759">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1223809323897759"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,12 +26,13 @@
             background: white;
             width: 90%;
             max-width: 400px;
-            padding: 20px;
+            padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: auto;
         }
 
         h1 {
@@ -58,6 +59,29 @@
         .dropdown {
             position: relative;
             width: 100%;
+            padding: 10%;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 480px) {
+            .converter-container {
+                width: 95%;
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .converter-form input,
+            .dropdown {
+                font-size: 1.2rem;
+                /* Aumenta o tamanho da fonte para melhor leitura */
+            }
+
+            button {
+                width: 100%;
+                /* Faz o botão ocupar toda a largura */
+                font-size: 1rem;
+                padding: 12px;
+            }
         }
 
         .dropdown-selected {
@@ -121,8 +145,8 @@
         }
 
         #clear-btn {
-    background-color: #d9534f;
-    margin-left: 20px;
+            background-color: #d9534f;
+            margin-left: 20px;
         }
 
         #clear-btn:hover {
@@ -153,8 +177,8 @@
                     <div data-value="USD"><img src="https://flagcdn.com/us.svg" alt="USD"> USD</div>
                     <div data-value="EUR"><img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR</div>
                     <div data-value="BRL"><img src="https://flagcdn.com/br.svg" alt="BRL"> BRL</div>
-                    <div data-value="GBP"><img src="https://flagcdn.com/gb.svg" alt="GBP"> GBP</div>                    
-                    <div data-value="JPY"><img src="https://flagcdn.com/jp.svg" alt="JPY"> JPY</div>                                        
+                    <div data-value="GBP"><img src="https://flagcdn.com/gb.svg" alt="GBP"> GBP</div>
+                    <div data-value="JPY"><img src="https://flagcdn.com/jp.svg" alt="JPY"> JPY</div>
                 </div>
             </div>
 
@@ -166,8 +190,8 @@
                     <div data-value="USD"><img src="https://flagcdn.com/us.svg" alt="USD"> USD</div>
                     <div data-value="EUR"><img src="https://flagcdn.com/eu.svg" alt="EUR"> EUR</div>
                     <div data-value="BRL"><img src="https://flagcdn.com/br.svg" alt="BRL"> BRL</div>
-                    <div data-value="GBP"><img src="https://flagcdn.com/gb.svg" alt="GBP"> GBP</div>                    
-                    <div data-value="JPY"><img src="https://flagcdn.com/jp.svg" alt="JPY"> JPY</div>                    
+                    <div data-value="GBP"><img src="https://flagcdn.com/gb.svg" alt="GBP"> GBP</div>
+                    <div data-value="JPY"><img src="https://flagcdn.com/jp.svg" alt="JPY"> JPY</div>
                 </div>
             </div>
 
