@@ -28,11 +28,27 @@ bashCopynpm install
 Execute a aplicação:
 
 bashCopynpm start
+<<<<<<< HEAD
+=======
+
+# 🧪 Executando os Testes
+
+O projeto usa Cypress para testes end-to-end. Para executar os testes:
+bashCopy# Abrir o Cypress Test Runner
+npm run cy:open
+>>>>>>> 5d2da72d4f11e0e60a145c6a6cb50ab0d1cb7e6e
 
 # 🧪 Executando os Testes
 O projeto usa Cypress para testes end-to-end. Para executar os testes: bashCopy# Abrir o Cypress Test Runner npm run cy:open
 
+<<<<<<< HEAD
 Executar testes em modo headless
 npm run cy:run 💻 Como Usar
 
 Selecione a moeda de origem no menu suspenso Digite o valor que deseja converter Selecione a moeda de destino O valor convertido será exibido automaticamente
+=======
+Selecione a moeda de origem no menu suspenso
+Digite o valor que deseja converter
+Selecione a moeda de destino
+O valor convertido será exibido automaticamente
+>>>>>>> 5d2da72d4f11e0e60a145c6a6cb50ab0d1cb7e6e
