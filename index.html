@@ -24,7 +24,7 @@
 
         .converter-container {
             background: white;
-            width: 100%;
+            width: 90%;
             max-width: 400px;
             padding: 20px;
             border-radius: 8px;
@@ -57,7 +57,7 @@
 
         .dropdown {
             position: relative;
-            width: 90%;
+            width: 100%;
         }
 
         .dropdown-selected {
@@ -142,7 +142,8 @@
     <div class="converter-container">
         <h1>Currency Converter</h1>
         <form class="converter-form">
-            <input type="number" id="amount-input" placeholder="Enter amount..." />
+            <input type="number" id="amount-input" placeholder="Enter amount..." step="0.01" />
+
 
             <div class="dropdown">
                 <div class="dropdown-selected" id="from-dropdown">
@@ -209,7 +210,7 @@
         converterForm.addEventListener('submit', async function (event) {
             event.preventDefault();
 
-            const amount = parseFloat(amountInput.value);
+            const amount = parseFloat(amountInput.value).toFixed(2);
             const from = fromDropdown.getAttribute('data-value');
             const to = toDropdown.getAttribute('data-value');
 
