@@ -19,7 +19,8 @@ describe('Conversor de Moedas', () => {
 
   cy.get('#result')
     .invoke('text')
-    .should('match', /^\d+ USD = \d+\.\d{2} EUR$/)      
+    .should('match', /^\d+.\d{2} USD = \d+.\d{2} EUR$/)
+
  })
  it('Deve impedir a conversão para a mesma moeda', () => {
   cy.get('#amount-input').type('1')
@@ -44,7 +45,7 @@ describe('Conversor de Moedas', () => {
 
   cy.get('#result')
     .invoke('text')
-    .should('match', /^\d+ USD = \d+\.\d{2} EUR$/)
+    .should('match', /^\d+.\d{2} USD = \d+.\d{2} EUR$/)
     
   cy.get('#clear-btn').click()
 
